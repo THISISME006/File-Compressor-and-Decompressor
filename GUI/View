@@ -1,0 +1,82 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package GUI;
+
+import compdecomp.CompDecomp;
+import compdecomp.decomp;
+import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import java.io.File;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
+
+/**
+ *
+ * @author Vaibhav Bhatt
+ */
+public class View extends JFrame implements ActionListener{
+    JButton compressButton;
+    JButton decompressButton;
+    
+    View(){   //whenever we initialize constructor of the view class GUI is constructed
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //whenever you click on cross the application will close and it will exit.
+        this.setLayout( null); // kept layout to null becuase we don't want our GUI to restrict to some kind of box.
+        
+        compressButton = new JButton( "SELECT TO COMPRESS");
+        compressButton.addActionListener( this);      // using this line compressButton we are adding an action listener so that whenever this button is clicked this function is triggered.
+        compressButton.setBounds(20, 100, 200, 30);
+        
+        decompressButton = new JButton( "SELECT TO DECOMPRESS");
+        decompressButton.addActionListener(this);
+        decompressButton.setBounds(250, 100, 200, 30);
+        
+        this.add(compressButton);    //  adding these two buttons to our GUI
+        this.add( decompressButton);
+        
+        this.getContentPane().setBackground(Color.LIGHT_GRAY);
+        this.setSize(500, 200);
+        
+        this.setSize( 500, 200);
+    }
+    
+    @Override
+    public void actionPerformed(ActionEvent e){          //this function is already present inside action listener, but it's not implemented. So that's why we are implementing and i.e we are writing @Override
+        if(e.getSource()==compressButton){
+            JFileChooser fileChooser = new JFileChooser();
+            int response = fileChooser.showSaveDialog(null);  // saves the response given by the user via JFileChooser fileChooser = new JFileChooser();
+            
+            if(response == JFileChooser.APPROVE_OPTION){
+                File file = new File(fileChooser.getSelectedFile().getAbsolutePath());  // First we will get the file from JFileChooser fileChooser = new JFileChooser();
+                try{
+                    CompDecomp.method(file);
+                }
+                catch(Exception excp){
+                    JOptionPane.showMessageDialog(null, excp.toString());
+                }
+            }  
+        }
+        if(e.getSource()==decompressButton){
+            JFileChooser fileChooser = new JFileChooser();
+            int response = fileChooser.showSaveDialog(null);
+            
+            if(response == JFileChooser.APPROVE_OPTION){
+                File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                try{
+                    decomp.method(file);
+                }
+                catch(Exception excp){
+                    JOptionPane.showMessageDialog(null, excp.toString());
+                }
+            }  
+        }
+    }
+    public static void main(String[] args){
+    View view = new View();
+    view.setVisible(true);      // whatever JFrame we made we want to make it visible.
+    }
+}
