@@ -16,6 +16,7 @@ Compressing the file was achieved using the following classes-
 
 ## Decompressing the compressed file: 
 Decompressing the file was achieved using the following classes-
+
 *Class FileInputStream to opening a connection to an actual file, the file named by the path name {@code name} in the file system.  A new {@code FileDescriptor} object is created to represent this file connection.
 
 *Class GZIPInputStream creates a new input stream with the specified buffer size.
