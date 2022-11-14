@@ -4,14 +4,16 @@
 This project is based on Huffman Coding, a lossless, bottom-up compression algorithm. It can compress and decompress any text,pdf and jpeg files.
 
 
-##Implementation in Project
+## Implementation in Project
 This project supports two functions:
 
-Encode: Compresses input file passed.
+# Encode: 
+Compresses input file passed.
 
-Decode: Decompresses Huffman coded file passed back to its original file.
+# Decode: 
+Decompresses Huffman coded file passed back to its original file.
 
-To RUN THIS :
+## To RUN THIS :
 Open cmd in the same folder where your files are stored.
 Now type "g++ encode.cpp -o main" , press enter.
 Now type "main input.txt Compress.huf" , press enter.
