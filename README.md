@@ -32,5 +32,9 @@ The GUI of the program uses mainly one Class for the GUI-
 ## Result:
 Successfully implementation of compressing and decompressing of text,pdf and JPEG files.
 
+
+![Screenshot (10)](https://user-images.githubusercontent.com/88935131/201940664-7fe0d33b-2f2d-43c2-8e3c-6970587aa2ff.jpg)
+
+
 ## Example:
 inputFile.txt (2.2MB) is compressed to compressedFile.huf (1.1MB) file and decompressed back to ouputFile.txt (2.2MB).
