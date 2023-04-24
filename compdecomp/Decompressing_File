@@ -10,29 +10,35 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.zip.GZIPInputStream;
+import javax.swing.JOptionPane;
 
 /**
  *
- * @author Vaibhav Bhatt
+ * @author Rhythin
  */
 public class decomp {
     public static void method(File file) throws FileNotFoundException, IOException{
-        String fileDirectory = file.getParent(); // getParent() it fetches file path or the directory path of the file
-        System.out.println( fileDirectory);
+        String fileDir=file.getParent();
+        System.out.println(fileDir);
         
         FileInputStream fis = new FileInputStream(file);
-        GZIPInputStream gzipIS = new GZIPInputStream( fis);
-        FileOutputStream fos = new FileOutputStream(fileDirectory + "\\Decompressedfile.txt");
+        GZIPInputStream gzipIS = new GZIPInputStream(fis);
         
-        byte[] buffer = new byte[1024];
+        String extension=JOptionPane.showInputDialog("enter uncompressed file extension.(Example txt, mkv, pdf)");
+        FileOutputStream fos = new FileOutputStream(fileDir+"\\uncompressedfile."+extension);
+        
+        byte buffer[]=new byte[1024];
         int len;
         
-        while((len=gzipIS.read(buffer))!=-1){
-            fos.write(buffer, len, len);
+        while((len=gzipIS.read(buffer))!= -1){
+            fos.write(buffer, 0, len);
         }
+        
         gzipIS.close();
         fis.close();
         fos.close();
+        
+        
     }
     public static void main(String[] args) throws IOException{
         File path = new File("C:\\Users\\shushil bhatt\\OneDrive\\Desktop\\project\\Compressedfile.gz");
